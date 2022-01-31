@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body{
     /* display: flex; */
     /* justify-content: center;
@@ -26,32 +32,19 @@ h1{
     margin-top: 0%;
 }
 
-#color-pick-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:darkorchid;
-    height: 100%;
-    /* height: 500px;
-    width: 300px; */
+#color {
+    position:absolute;
+    top:-10px;
+    left:-10px;
+    width:99px;
+    height:99px;
 }
-
-#color-picker {
-    width: 70px;
-    height:70px;
+.circle {
+    position:relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     overflow: hidden;
-    border-radius:100%;
-}
-
-#color-picker > input[type='color'] {
-    opacity: 1;
-    width: 160px;
-    height: 160px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000001A;
-    padding: 0;
-    margin: -30px 0 0 -30px;
-}
 
 #eas-grid {
     display: flex;
