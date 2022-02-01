@@ -10,11 +10,27 @@
 <body>
     <h1>Etch-A-Sketch</h1>
     <div id="eas-contents">
-        <div class="circle">
-            <input id="color" type="color">
+        <div id="color-options">
+            <div class = "color-pick">
+                <div class="circle">
+                    <input id="color" type="color">
+                </div>
+                <div class="name">COLOR PICK</div>
+            </div>
+            <div class="rainbow-colors">
+                <div id="rainbow-circle"></div>
+                <div class="name">RAINBOW</div>
+            </div>
+            <div class="warm-colors">
+                <div id="warm-color-circle"></div>
+                <div class="name">WARM COLORS</div>
+            </div>   
+            <div class="cold-colors">
+                <div id="cold-color-circle"></div>
+                <div class="name">COLD COLORS</div>
+            </div>
         </div>
         <div id="eas-grid"></div>
-        <div id="dimensions-list"></div>
     </div>
         <script src="./eas.js" ></script>
     </div>
