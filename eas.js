@@ -68,3 +68,65 @@ let rainbowColorsFunction = () => {
    console.log(randomRainbowColor) ;
 }
 console.log(rainbowColorsFunction());
+
+//only colors one color to individual boxes
+// let rainbowColors = ["#431677", "#003d62","#00FFFF","#00A36C","#FFEA00","#FF7518","#DC143C"];
+// let randomRainbowColor = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
+//console.log(randomRainbowColor);
+
+//color for rainbow-mode
+//random but only last box
+// let rainbowColors = ["violet", "indigo","blue","green","yellow","orange","red"];
+// let rainbowColorsFunction = () => {
+//    let randomRainbowColor = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
+//     if (randomRainbowColor === "violet") {
+//        box.style.backgroundColor = "#431677";
+//    } else if (randomRainbowColor === "indigo") {
+//     box.style.backgroundColor = "#003d62";
+//    } else if (randomRainbowColor === "blue") {
+//     box.style.backgroundColor = "#00FFFF";
+//    } else if (randomRainbowColor === "green") {
+//     box.style.backgroundColor = "#00A36C";
+//    } else if (randomRainbowColor === "yellow") {
+//     box.style.backgroundColor = "#FFEA00";
+//    } else if (randomRainbowColor === "orange") {
+//     box.style.backgroundColor = "#FF7518";
+//    } else if (randomRainbowColor === "red") {
+//     box.style.backgroundColor = "#DC143C";
+//    } else {
+//        return "error";
+//    }
+//    console.log(randomRainbowColor) ;
+// }
+
+//another method
+//random colors but ALL the boxes at once
+// let rainbowColors = ["violet", "indigo","blue","green","yellow","orange","red"];
+// let rainbowColorsFunction = () => {
+//    let randomRainbowColor = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
+//     if (randomRainbowColor === "violet") {
+//         document.querySelectorAll(".box").forEach((box) => {
+//        box.style.backgroundColor = "#431677";});
+//    } else if (randomRainbowColor === "indigo") {
+//     document.querySelectorAll(".box").forEach((box) => {
+//     box.style.backgroundColor = "#003d62";});
+//    } else if (randomRainbowColor === "blue") {
+//     document.querySelectorAll(".box").forEach((box) => {
+//     box.style.backgroundColor = "#00FFFF";});
+//    } else if (randomRainbowColor === "green") {
+//     document.querySelectorAll(".box").forEach((box) => {
+//     box.style.backgroundColor = "#00A36C";});
+//    } else if (randomRainbowColor === "yellow") {
+//     document.querySelectorAll(".box").forEach((box) => {
+//     box.style.backgroundColor = "#FFEA00";});
+//    } else if (randomRainbowColor === "orange") {
+//     document.querySelectorAll(".box").forEach((box) => {
+//     box.style.backgroundColor = "#FF7518";});
+//    } else if (randomRainbowColor === "red") {
+//     document.querySelectorAll(".box").forEach((box) => {
+//     box.style.backgroundColor = "#DC143C";});
+//    } else {
+//        return "error";
+//    }
+//    console.log(randomRainbowColor) ;
+// }
