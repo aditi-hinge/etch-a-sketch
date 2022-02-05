@@ -116,6 +116,6 @@ h1{
 
 .row {
     background-color: aquamarine;
-    border: 0.01 em 0.01 em solid black;
+/*     border: 0.01 em 0.01 em solid black; */
     /* border: 1px solid black; */
     }
