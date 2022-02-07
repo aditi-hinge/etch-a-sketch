@@ -1,190 +1,202 @@
-let row;
-let box;
 let gridContainer = document.getElementById("eas-grid");
 let colorPicker = document.getElementById("color");
 let rainbowCircle = document.getElementById("rainbow-circle");
+let warmColorCircle = document.getElementById("warm-color-circle");
+let coolColorCircle = document.getElementById("cool-color-circle");
+let range = document.getElementById("myRange");
+let divSizeText= document.getElementById("div-size-text");
+let erase= document.getElementById("erase");
+let reset = document.getElementById("reset");
+let toggleGridLines = document.getElementById("toggle-grid-lines");
+let box;
+let gridSize= range.value;
 
+//range - change event listener
+range.addEventListener("change", (event) =>{
+    gridContainer.innerHTML ="";
+    createGrid(gridSize);
+    });
 
-//grid for 16
-let createGrid = (variable) => {
-    for(let i=0; i<variable;i++) {
-        row = document.createElement("div");
-        row.className = "row";
-         for (let j=0; j<variable;j++) {
+//range - input event listener
+range.addEventListener("input", (event)=>{
+    gridSize = event.target.value;
+    divSizeText.textContent = "";
+    divSizeText.textContent = `GRID SIZE: ${gridSize} X ${gridSize}`;
+    });
+
+let createGrid = (gridSize) => {
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize},1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${gridSize},1fr)`;
+    const boxSize = 450/gridSize;
+    for(let i=0; i<gridSize*gridSize;i++) {
             box = document.createElement("div");
             box.className = "box";
-            row.appendChild(box);
-            
-    }gridContainer.appendChild(row);
-}};
-createGrid(32);
+            box.style.height = `${boxSize}px`;
+            box.style.width = `${boxSize}px`;
+            box.style.borderRadius="10px";
+            gridContainer.appendChild(box);
+        }
+    gridContainer.style.height= "450px";
+    gridContainer.style.width= "450px";
+    gridContainer.style.gap="1px";
+    };
+createGrid(gridSize);
 
+
+
+//erase button
+erase.addEventListener("click",()=>{
+    document.querySelectorAll(".box").forEach((box) =>{
+        box.addEventListener("mouseover", ()=>{
+            box.style.backgroundColor="white";
+        })
+    })
+});
+
+//reset grid done
+reset.addEventListener("click",()=>{
+    gridContainer.innerHTML="";
+    createGrid(gridSize);
+    });
+    
 //color for colorPicker value-all
-
-
 colorPicker.addEventListener("click", () => {
     document.querySelectorAll(".box").forEach((box) => {
         box.addEventListener("mouseover", () => {
             box.style.backgroundColor = colorPicker.value;
-    });
-})
+        });
+    })
 });
-// let rainbowColors = ["#431677", "#003d62","#00FFFF","#00A36C","#FFEA00","#FF7518","#DC143C"];
-// let randomRainbowColor = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
-// console.log(randomRainbowColor);
-
-rainbowCircle.addEventListener("click", () => {
-    document.querySelectorAll(".box").forEach((box) => {
-        box.addEventListener("mouseover", ()=>{
-            box.style.backgroundColor = rainbowColorsFunction;
-    });
-});
-});
-
-
-
-
-//color for rainbow-mode
-let rainbowColors = ["violet", "indigo","blue","green","yellow","orange","red"];
-let rainbowColorsFunction = () => {
-   let randomRainbowColor = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
-    if (randomRainbowColor === "violet") {
-       box.style.backgroundColor = "#431677";
-   } else if (randomRainbowColor === "indigo") {
-    box.style.backgroundColor = "#003d62";
-   } else if (randomRainbowColor === "blue") {
-    box.style.backgroundColor = "#00FFFF";
-   } else if (randomRainbowColor === "green") {
-    box.style.backgroundColor = "#00A36C";
-   } else if (randomRainbowColor === "yellow") {
-    box.style.backgroundColor = "#FFEA00";
-   } else if (randomRainbowColor === "orange") {
-    box.style.backgroundColor = "#FF7518";
-   } else if (randomRainbowColor === "red") {
-    box.style.backgroundColor = "#DC143C";
-   } else {
-       return "error";
-   }
-   console.log(randomRainbowColor) ;
-}
-console.log(rainbowColorsFunction());
-
-//if else loop for rainbow and warm colors (worked but better and shorter version made)
 
 //random rainbow color
 rainbowCircle.addEventListener("click", () => {
     document.querySelectorAll(".box").forEach((box) => {
         box.addEventListener("mouseover", ()=>{
             box.style.backgroundColor = rainbowColorsFunction();
-             });
-});
-});
+            });
+        });
+    });
 
-// //function to generate random rainbow color
-let rainbowColors = ["violet", "indigo","blue","green","yellow","orange","mint",
-                     "pastelPurple", "pinkPlum","darkOrange","SchoolBusYellow","tomato"];
-let rainbowColorsFunction = () => {
-   let randomRainbowColor = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
-    if (randomRainbowColor === "violet") {
-        return "#77BFC7";
-   } else if (randomRainbowColor === "indigo") {
-    return "#2B65EC";
-   } else if (randomRainbowColor === "blue") {
-    return "#00FFFF";
-   } else if (randomRainbowColor === "green") {
-    return "#00A36C";
-   } else if (randomRainbowColor === "yellow") {
-    return "#FFEA00";
-   } else if (randomRainbowColor === "orange") {
-    return "#FF7518";
-   } else if (randomRainbowColor === "mint") {
-    return "#3EB489";
-   } else if (randomRainbowColor === "pastelPurple") {
-    return "#F2A2E8";
-   } else if (randomRainbowColor === "pinkPlum") {
-    return "#B93B8F";
-   } else if (randomRainbowColor === "SchoolBusYellow") {
-    return "#E8A317";
-   } else if (randomRainbowColor === "darkOrange") {
-    return "#FF8C00";
-   } else if (randomRainbowColor === "tomato") {
-    return "#FF6347";
-   }else {
-       return "error";
-   }
-   }
 
 //random warm colors
 warmColorCircle.addEventListener("click", () => {
     document.querySelectorAll(".box").forEach((box) => {
         box.addEventListener("mouseover", ()=>{
             box.style.backgroundColor = warmColorsFunction();
-            console.log(warmColorsFunction());
-             });
-});
-});
+            });
+        });
+    });
 
 //random warm colors functions
-let warmColors = ["BrightGold", "MacaroniandCheese","CanaryYellow","DeerBrown","CamelBrown","Brass","Cinnamon",
-                     "Copper", "pinkPlum","darkOrange","SchoolBusYellow","tomato","Mahogany",
-                    "Rust", "PapayaOrange","Salmon","PastelRed", "ValentineRed", "RubyRed",
-                    "TomatoSauceRed","Burgundy","DonutPink","CarnationPink","Beer","BurlyWood",
-                    "Bronze"];
+
+let warmColors = ["BrightGold", "MacaroniandCheese","CanaryYellow","DeerBrown","Cinnamon",
+                    "Copper","darkOrange","SchoolBusYellow","Mahogany", "PapayaOrange"];
+
+let warmColorPallete = {
+    'BrightGold' : "#FDD017",
+    'MacaroniandCheese' : "#F2BB66",
+    'CanaryYellow' : "#FFEF00",
+    'DeerBrown' : "#E6BF83",
+    'Cinnamon' : "#C58917",
+    'Copper' : "#B87333",    
+    'SchoolBusYellow' : "#E8A317",
+    'darkOrange' : "#FF8C00",
+    'Mahogany' : "#C04000",
+    'PapayaOrange' : "#E56717",
+    }                    
+
 let warmColorsFunction = () => {
-   let randomWarmColor = warmColors[Math.floor(Math.random()*warmColors.length)];
-    if (randomWarmColor === "BrightGold") {
-        return "#FDD017";
-   } else if (randomWarmColor === "MacaroniandCheese") {
-    return "#F2BB66";
-   } else if (randomWarmColor === "CanaryYellow") {
-    return "#FFEF00";
-   } else if (randomWarmColor === "DeerBrown") {
-    return "#E6BF83";
-   } else if (randomWarmColor === "CamelBrown") {
-    return "#C19A6B";
-   } else if (randomWarmColor === "Brass") {
-    return "#B5A642";
-   } else if (randomWarmColor === "Cinnamon") {
-    return "#C58917";
-   } else if (randomWarmColor === "Copper") {
-    return "#B87333";
-   } else if (randomWarmColor === "pinkPlum") {
-    return "#B93B8F";
-   } else if (randomWarmColor === "SchoolBusYellow") {
-    return "#E8A317";
-   } else if (randomWarmColor === "darkOrange") {
-    return "#FF8C00";
-   } else if (randomWarmColor === "tomato") {
-    return "#FF6347";
-   } else if (randomWarmColor === "Mahogany") {
-    return "#C04000";
-   } else if (randomWarmColor === "Rust") {
-    return "#C36241";
-   } else if (randomWarmColor === "PapayaOrange") {
-    return "#E56717";
-   } else if (randomWarmColor === "Salmon") {
-    return "#FA8072";
-   } else if (randomWarmColor === "PastelRed") {
-    return "#F67280";
-   } else if (randomWarmColor === "ValentineRed") {
-    return "#E55451";
-   } else if (randomWarmColor === "RubyRed") {
-    return "#F62217";
-   } else if (randomWarmColor === "TomatoSauceRed") {
-    return "#B21807";
-   } else if (randomWarmColor === "Burgundy") {
-    return "#8C001A";
-   } else if (randomWarmColor === "DonutPink") {
-    return "#FAAFBE";
-   } else if (randomWarmColor === "CarnationPink") {
-    return "#F778A1";
-   } else if (randomWarmColor === "Beer") {
-    return "#FBB117";
-   } else if (randomWarmColor === "BurlyWood") {
-    return "#DEB887";
-   } else if (randomWarmColor === "Bronze") {
-    return "#CD7F32";
-   } else {
-       return "error";
-   }
-   }
+    let randomWarmColor = warmColors[Math.floor(Math.random()*warmColors.length)];
+    return warmColorPallete[randomWarmColor];
+    };
+
+//random cool colors function
+
+let coolColors = ["RichLilac", "BrightLilac","PastelPurple","BlossomPink","CottonCandy",
+                    "Mauve", "pinkPlum", ];
+
+let coolColorPallete = {
+    'RichLilac' : "#B666D2",    
+    'BrightLilac' : "#D891EF",
+    'PastelPurple' : "#F2A2E8",
+    'BlossomPink' : "#F9B7FF",
+    'CottonCandy' : "#FCDFFF",
+    'Mauve' : "#E0B0FF",
+    'pinkPlum' : "#B93B8F",
+    }
+
+//random cool colors
+coolColorCircle.addEventListener("click", () => {
+    document.querySelectorAll(".box").forEach((box) => {
+        box.addEventListener("mouseover", ()=>{
+            box.style.backgroundColor = coolColorsFunction();
+            });
+        });
+    });
+
+let coolColorsFunction = () => {
+    let randomCoolColor = coolColors[Math.floor(Math.random()*coolColors.length)];
+    return coolColorPallete[randomCoolColor];
+    };
+
+//function to generate random rainbow color
+let rainbowColors = ["BlueHosta", "OceanBlue","blue", "yellow","orange","mint", 
+                    "DeepSeaGreen", "Jade","HazelGreen","VenomGreen","Olive","PineGreen",
+                    "DarkGreen","DarkForestGreen", "AlienGreen","AcidGreen","HummingbirdGreen",
+                    "PastelRed", "ValentineRed", "RubyRed", "TomatoSauceRed","Burgundy",
+                    "DonutPink","CarnationPink","Beer","BurlyWood", "Bronze","YellowGreenGrosbeak",
+                    "Taupe", "WesternCharcoal", "PurpleLily", "PlumVelvet","CobaltBlue",
+                    "BlueOrchid","DodgerBlue","DeepSkyBlue",  "BrightCyan","DarkTurquoise",
+                    "DarkMagenta","CamelBrown","Brass","tomato", "Rust", "Salmon"];
+
+let rainbowColorPalette = {
+    'BlueHosta' : "#77BFC7",
+    'OceanBlue' : "#2B65EC",
+    'blue' : "#00FFFF",
+    'yellow' : "#FFEA00",
+    'orange' : "#FF7518",
+    'mint' : "#3EB489",
+    'DeepSeaGreen' : "#306754",
+    'Jade' : "#00A36C",
+    'HazelGreen' : "#617C58",
+    'VenomGreen' : "#728C00",
+    'Olive' : "#808000",
+    'PineGreen' : "#387C44",
+    'DarkGreen' : "#006400",
+    'DarkForestGreen' : "#254117",
+    'AlienGreen' : "#6CC417",
+    'AcidGreen' : "#B0BF1A",
+    'HummingbirdGreen' : "#7FE817",
+    'PastelRed' : "#F67280",
+    'ValentineRed' : "#E55451",
+    'RubyRed' : "#F62217",
+    'TomatoSauceRed' : "#B21807",
+    'Burgundy' : "#8C001A",
+    'DonutPink' : "#FAAFBE",
+    'CarnationPink' : "#F778A1",
+    'Beer' : "#FBB117",
+    'BurlyWood' : "#DEB887",
+    'Bronze' : "#CD7F32",
+    'YellowGreenGrosbeak' : "#E2F516",
+    'Taupe' : "#483C32",
+    'WesternCharcoal' : "#49413F",
+    'PurpleLily' : "#550A35",
+    'PlumVelvet' : "#7D0552",
+    'CobaltBlue' : "#0020C2",
+    'BlueOrchid' : "#1F45FC",
+    'DodgerBlue' : "#1E90FF",
+    'DeepSkyBlue' : "#00BFFF",
+    'BrightCyan' : "#0AFFFF",
+    'DarkTurquoise' : "#00CED1",
+    'DarkMagenta' : "#8B008B",
+    'CamelBrown' : "#C19A6B",
+    'Brass' : "#B5A642",    
+    'tomato' : "#FF6347",
+    'Rust' : "#C36241",
+    'Salmon' : "#FA8072",
+    };
+
+let rainbowColorsFunction = () => {
+   let randomRainbowColor = rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
+    return rainbowColorPalette[randomRainbowColor];
+    };
