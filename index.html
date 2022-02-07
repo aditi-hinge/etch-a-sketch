@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.ico">
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -12,26 +17,33 @@
     <div id="eas-contents">
         <div id="color-options">
             <div class = "color-pick">
-                <div class="circle">
-                    <input id="color" type="color">
-                </div>
+                <button class="circle">
+                    <input id="color" type="color" value="#FF5C5C">
+                </button>
                 <div class="name">COLOR PICK</div>
             </div>
             <div class="rainbow-colors">
-                <div id="rainbow-circle"></div>
-                <div class="name">RAINBOW</div>
+                <button id="rainbow-circle"></button>
+                <div class="name">RAINBOW COLORS</div>
             </div>
             <div class="warm-colors">
-                <div id="warm-color-circle"></div>
+                <button id="warm-color-circle"></button>
                 <div class="name">WARM COLORS</div>
             </div>   
             <div class="cold-colors">
-                <div id="cold-color-circle"></div>
-                <div class="name">COLD COLORS</div>
+                <button id="cool-color-circle"></button>
+                <div class="name">COOL COLORS</div>
             </div>
         </div>
-        <div id="eas-grid"></div>
-    </div>
+        <div class="grid-body">
+            <div id= "rangeSection">
+                <div id="div-size-text">GRID SIZE: 16 X 16</div>
+                <input type = "range" min="3" max="30" id="myRange" value="9">
+                <button id="erase">ERASER</button>
+                <button id="reset">CLEAR GRID</button>
+            </div>
+            <div id="eas-grid"></div>
+        </div>
         <script src="./eas.js" ></script>
     </div>
 </body>
